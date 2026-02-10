@@ -1,0 +1,58 @@
+
+services:
+  web:
+    build: .
+    container_name: tonkatek_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./uploads:/var/www/html/uploads
+    depends_on:
+      - db
+    networks:
+      - tonkatek_network
+    environment:
+      - DB_HOST=db
+      - DB_NAME=tonkatek_db
+      - DB_USER=tonkatek_user
+      - DB_PASSWORD=tonkatek_pass
+
+  db:
+    image: mysql:8.0
+    container_name: tonkatek_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: tonkatek_db
+      MYSQL_USER: tonkatek_user
+      MYSQL_PASSWORD: tonkatek_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - tonkatek_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: tonkatek_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - db
+    networks:
+      - tonkatek_network
+
+volumes:
+  db_data:
+
+networks:
+  tonkatek_network:
+    driver: bridge

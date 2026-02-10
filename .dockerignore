@@ -1,0 +1,11 @@
+.git
+.gitignore
+README.md
+INSTRUCCIONES.md
+PRESENTACION.md
+PROYECTO_COMPLETO.txt
+SOLUCION_LOGIN.md
+*.md
+database/init.sql.backup
+src/.passwords_initialized
+src/verificar_hash.php
