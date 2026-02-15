@@ -1,0 +1,42 @@
+root = true
+
+# Configuración general para todos los archivos
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Scripts de shell y Dockerfile: LF obligatorio
+[*.sh]
+end_of_line = lf
+
+[Dockerfile]
+end_of_line = lf
+indent_size = 4
+
+# PHP
+[*.php]
+indent_size = 4
+
+# SQL
+[*.sql]
+indent_size = 4
+
+# YAML / Docker Compose
+[*.{yml,yaml}]
+indent_size = 2
+
+# JSON
+[*.json]
+indent_size = 2
+
+# HTML / CSS / JS
+[*.{html,css,js}]
+indent_size = 4
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
