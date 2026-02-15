@@ -1,4 +1,6 @@
 <?php
+// Establecer la codificación UTF-8 en los headers HTTP
+header('Content-Type: text/html; charset=utf-8');
 define('SITE_NAME', 'TonkaTek');
 define('SITE_SLOGAN', 'Tus tonki precios de confianza');
 define('BASE_URL', 'http://localhost:8080');
