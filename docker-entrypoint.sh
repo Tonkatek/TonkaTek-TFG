@@ -8,8 +8,6 @@ echo "TonkaTek: Iniciando contenedor web..."
 echo "TonkaTek: Esperando a que MySQL esté disponible..."
 sleep 30
 
-# Archivo de marca para saber si ya se ejecutó
-INIT_FILE="/var/www/html/.passwords_initialized"
 
 echo "TonkaTek: Primera inicialización - actualizando contraseñas..."
     
@@ -48,7 +46,6 @@ try {
 EOPHP
     
     # Crear archivo de marca
-touch "$INIT_FILE"
 echo "TonkaTek: Inicialización completada"
 
 echo "TonkaTek: Las contraseñas ya están inicializadas"
